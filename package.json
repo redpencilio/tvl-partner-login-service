@@ -1,0 +1,32 @@
+{
+  "name": "vendor-login-service",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Login microservice for a mu-semtech stack for vendors to get access to an RDF endpoint.",
+  "dependencies": {
+    "@lblod/mu-auth-sudo": "^0.6.0",
+    "@rdfjs/namespace": "^2.0.0",
+    "env-var": "7.3.0",
+    "jsonld": "^8.1.0",
+    "n3": "^1.16.2",
+    "rdf-string-ttl": "^1.2.0",
+    "sparqljson-parse": "^2.1.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  },
+  "scripts": {
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --cache --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjay10/vendor-login-service.git"
+  },
+  "author": "redpencil.io",
+  "license": "MIT"
+}
