@@ -19,14 +19,19 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1"
   },
+  "main": "app.js",
   "scripts": {
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --cache --fix"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/benjay10/vendor-login-service.git"
+    "url": "https://github.com/lblod/vendor-login-service.git"
   },
   "author": "redpencil.io",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lblod/vendor-login-service/issues"
+  },
+  "homepage": "https://github.com/lblod/vendor-login-service#readme"
 }
