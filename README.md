@@ -9,11 +9,8 @@ This service will be used by entities that would like to log in to the stack usi
 Add the vendor login service to a mu-semtech stack by placing the following snippet in the `docker-compose.yml` file as a service:
 
 ```yaml
-# TODO
-# The Drone build has not been setup yet. Come back later, or make your own local build for now and use it like this:
-
 vendor-login:
-  image: <your own build>
+  image: lblod/vendor-login-service:0.0.1
 ```
 
 Add the following lines to the dispatcher's configuration:
