@@ -20,7 +20,7 @@ const PREFIXES = {
 export const NAMESPACES = (() => {
   const all = {};
   for (const key in PREFIXES)
-    all[key] = pred => namedNode(`${PREFIXES[key]}${pred}`);
+    all[key] = (pred) => namedNode(`${PREFIXES[key]}${pred}`);
   return all;
 })();
 
