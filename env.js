@@ -1,5 +1,5 @@
-import namespace from '@rdfjs/namespace';
 import * as N3 from 'n3';
+const { namedNode } = N3.DataFactory;
 
 //TODO Use library env-var to parse environment variables if necessary.
 
@@ -20,7 +20,7 @@ const PREFIXES = {
 export const NAMESPACES = (() => {
   const all = {};
   for (const key in PREFIXES)
-    all[key] = namespace(PREFIXES[key], { factory: N3.DataFactory });
+    all[key] = pred => namedNode(`${PREFIXES[key]}${pred}`);
   return all;
 })();
 
