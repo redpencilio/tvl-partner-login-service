@@ -64,7 +64,7 @@ app.use(async (err, req, res, next) => {
 ///////////////////////////////////////////////////////////////////////////////
 
 /*
- * Make sure the incoming request has the content type(s) this service can to.
+ * Make sure the incoming request has the content type(s) this service can respond to.
  *
  * @function
  * @param {String} contentType - The string that contains the 'Content-Type' header information from the request.
