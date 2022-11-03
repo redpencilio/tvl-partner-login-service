@@ -1,13 +1,11 @@
 {
   "name": "vendor-login-service",
   "version": "0.0.1",
-  "type": "module",
   "description": "Login microservice for a mu-semtech stack for vendors to get access to an RDF endpoint.",
   "dependencies": {
     "@lblod/mu-auth-sudo": "^0.6.0",
-    "@rdfjs/namespace": "^2.0.0",
     "env-var": "7.3.0",
-    "jsonld": "^8.1.0",
+    "jsonld": "^1.7.0",
     "n3": "^1.16.2",
     "rdf-string-ttl": "^1.2.0",
     "sparqljson-parse": "^2.1.1",
