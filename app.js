@@ -1,10 +1,10 @@
 import { app } from 'mu';
 import bodyParser from 'body-parser';
-import { NAMESPACES as ns } from './env.js';
+import { NAMESPACES as ns } from './env';
 import { v4 as uuid } from 'uuid';
 import * as jsonld from 'jsonld';
-import * as vl from './lib/vendor-login.js';
-import * as con from './lib/contexts.js';
+import * as vl from './lib/vendor-login';
+import * as con from './lib/contexts';
 import * as N3 from 'n3';
 const { namedNode, literal, blankNode } = N3.DataFactory;
 
