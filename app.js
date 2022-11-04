@@ -24,7 +24,7 @@ app.post('/sessions', async function (req, res, next) {
       con.LoginResponseContext,
       con.LoginResponseFrame
     );
-    res.status(201).header('mu-auth-allow-groups', 'CLEAR').json(jsonLdObject);
+    res.status(201).header('mu-auth-allowed-groups', 'CLEAR').json(jsonLdObject);
   } catch (e) {
     next(e);
   }
@@ -35,7 +35,7 @@ app.delete('/sessions/current', async function (req, res, next) {
     ensureMinimalLoginHeaders(req);
     const sessionUri = req.get('Mu-Session-Id');
     vl.logout(namedNode(sessionUri));
-    res.status(204).header('mu-auth-allow-groups', 'CLEAR').end();
+    res.status(204).header('mu-auth-allowed-groups', 'CLEAR').end();
   } catch (e) {
     next(e);
   }
