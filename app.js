@@ -24,7 +24,10 @@ app.post('/sessions', async function (req, res, next) {
       con.LoginResponseContext,
       con.LoginResponseFrame
     );
-    res.status(201).header('mu-auth-allowed-groups', 'CLEAR').json(jsonLdObject);
+    res
+      .status(201)
+      .header('mu-auth-allowed-groups', 'CLEAR')
+      .json(jsonLdObject);
   } catch (e) {
     next(e);
   }
