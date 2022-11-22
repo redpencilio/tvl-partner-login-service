@@ -1,12 +1,17 @@
 # vendor-login-service
 
-Login microservice for a mu-semtech stack for vendors to get access to an RDF endpoint.
+Login microservice for a mu-semtech stack for vendors to get access to an RDF
+endpoint.
 
-This service will be used by entities that would like to log in to the stack using an API key that is registered to an account that can act on behalf of an organisation. The client will get an active session that can be used to e.g. execute SPARQL queries through mu-authorization.
+This service will be used by entities that would like to log in to the stack
+using an API key that is registered to an account that can act on behalf of an
+organisation. The client will get an active session that can be used to e.g.
+execute SPARQL queries through mu-authorization.
 
 ## Adding to a stack
 
-Add the vendor login service to a mu-semtech stack by placing the following snippet in the `docker-compose.yml` file as a service:
+Add the vendor login service to a mu-semtech stack by placing the following
+snippet in the `docker-compose.yml` file as a service:
 
 ```yaml
 vendor-login:
@@ -29,15 +34,21 @@ end
 
 ### Configuration
 
-Nothing can be configured yet. This section will be completed as soon as some configuration becomes available.
+Nothing can be configured yet. This section will be completed as soon as some
+configuration becomes available.
 
 ### API
 
-This service requires requests to be formatted as JSON-LD, but because default contexts are added to requests, you can send small (further referenced as 'minimal') JSON bodies that are automatically enriched. Responses are always full JSON-LD, but compacted and framed so that they are human readable and have a fixed tree structure.
+This service requires requests to be formatted as JSON-LD, but because default
+contexts are added to requests, you can send small (further referenced as
+'minimal') JSON bodies that are automatically enriched. Responses are always
+full JSON-LD, but compacted and framed so that they are human readable and have
+a fixed tree structure.
 
 #### POST `/sessions`
 
-Log in as a vendor. Supply the URI identifying the vendor as the publisher, the organisation this vendor can act on behalf of and the API key as credentials.
+Log in as a vendor. Supply the URI identifying the vendor as the publisher, the
+organisation this vendor can act on behalf of and the API key as credentials.
 
 **Request body**
 
@@ -53,7 +64,9 @@ The minimal JSON-LD request body looks like this:
 }
 ```
 
-For a full description of the JSON-LD context, [look at the `LoginRequestContext` variable in the `contexts.js` file](./lib/contexts.js#L1).
+For a full description of the JSON-LD context, [look at the
+`LoginRequestContext` variable in the `contexts.js`
+file](./lib/contexts.js#L1).
 
 **Response**
 
@@ -72,19 +85,24 @@ A typical response you might get from logging in:
 }
 ```
 
-For a full description of the JSON-LD context, [look at the `LoginResponseContext` variable in the `contexts.js` file](./lib/contexts.js#L16).
+For a full description of the JSON-LD context, [look at the
+`LoginResponseContext` variable in the `contexts.js`
+file](./lib/contexts.js#L16).
 
 `400 Bad Request`
 
 Possible causes are:
 
-* Session header might be missing. The header should be automatically set by the identifier.
+* Session header might be missing. The header should be automatically set by
+  the identifier.
 * Credentials might be incorrect.
 * Account might be inactive.
 
 #### DELETE `/sessions/current`
 
-To log out, request with `DELETE` the removal of the current session. No body needed as this is done through cookies (outside the stack) and HTTP headers (inside the stack).
+To log out, request with `DELETE` the removal of the current session. No body
+needed as this is done through cookies (outside the stack) and HTTP headers
+(inside the stack).
 
 `204 No Content`
 
@@ -92,11 +110,13 @@ Logout was successful.
 
 `400 Bad Request`
 
-Session header might be missing or invalid. The header should be automatically set by the identifier.
+Session header might be missing or invalid. The header should be automatically
+set by the identifier.
 
 ### Model
 
-This model is based on the model described in the [mu-login-service](https://github.com/mu-semtech/login-service).
+This model is based on the model described in the
+[mu-login-service](https://github.com/mu-semtech/login-service).
 
 **Prefixes**
 
