@@ -1,7 +1,7 @@
 {
-  "name": "vendor-login-service",
+  "name": "tvl-partner-login-service",
   "version": "0.0.1",
-  "description": "Login microservice for a mu-semtech stack for vendors to get access to an RDF endpoint.",
+  "description": "Login microservice for the TVL Linked Data stack to provide authorized API access",
   "dependencies": {
     "@lblod/mu-auth-sudo": "^0.6.0",
     "env-var": "7.3.0",
@@ -24,12 +24,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lblod/vendor-login-service.git"
+    "url": "https://github.com/redpencilio/tvl-partner-login-service.git"
   },
   "author": "redpencil.io",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lblod/vendor-login-service/issues"
-  },
-  "homepage": "https://github.com/lblod/vendor-login-service#readme"
+  "license": "MIT"
 }
