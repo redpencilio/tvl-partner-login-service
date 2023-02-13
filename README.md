@@ -1,32 +1,31 @@
-# vendor-login-service
+# tvl-partner-login-service
 
-Login microservice for a mu-semtech stack for vendors to get access to an RDF
-endpoint.
+Login microservice for the TVL Linked Data stack to provide authorized API access.
 
 This service will be used by entities that would like to log in to the stack
-using an API key that is registered to an account that can act on behalf of an
-organisation. The client will get an active session that can be used to e.g.
-execute SPARQL queries through mu-authorization.
+using an API key that is registered to an account. The client will get an active
+session that can be used to e.g. execute SPARQL queries through mu-authorization.
 
-## Adding to a stack
+## Getting started
+### Add the service to your stack
 
-Add the vendor login service to a mu-semtech stack by placing the following
+Add the partner login service to a mu-semtech stack by placing the following
 snippet in the `docker-compose.yml` file as a service:
 
 ```yaml
-vendor-login:
-  image: lblod/vendor-login-service:0.0.1
+partner-login:
+  image: redpencil/tvl-partner-login-service
 ```
 
 Add the following lines to the dispatcher's configuration:
 
 ```elixir
 post "/login/*path" do
-  Proxy.forward conn, path, "http://vendor-login/sessions"
+  Proxy.forward conn, path, "http://partner-login/sessions"
 end
 
 delete "/logout" do
-  Proxy.forward conn, [], "http://vendor-login/sessions/current"
+  Proxy.forward conn, [], "http://partner-login/sessions/current"
 end
 ```
 
@@ -47,8 +46,8 @@ a fixed tree structure.
 
 #### POST `/sessions`
 
-Log in as a vendor. Supply the URI identifying the vendor as the publisher, the
-organisation this vendor can act on behalf of and the API key as credentials.
+Log in as a partner. Supply the URI identifying the partner as the publisher, the
+organisation this partner can act on behalf of and the API key as credentials.
 
 **Request body**
 
@@ -58,7 +57,7 @@ The minimal JSON-LD request body looks like this:
 {
   "organization": "http://data.lblod.info/id/bestuurseenheden/jdjkq65q4sdfqsdf4456654321fqsd456f321",
   "publisher": {
-    "uri": "http://example.com/vendor/acme",
+    "uri": "http://example.com/partner/acme",
     "key": "acme-secret-key"
   }
 }
@@ -76,7 +75,7 @@ A typical response you might get from logging in:
 
 ```json
 {
-  "account": "http://example.com/vendor/acme",
+  "account": "http://example.com/partner/acme",
   "uuid": "fd0dc8d2-2d8e-4079-8a83-a19c5b131507",
   "created": {
     "@type": "xsd:dateTime",
@@ -138,4 +137,4 @@ This model is based on the model described in the
 | `rdf:type`          | `rdfs:Class`   | `session:Session` Class definition.                                     |
 | `mu:uuid`           | `xsd:string`   | Mu identifier UUID.                                                     |
 | `dct:created`       | `xsd:dateTime` | Creation date of this session.                                          |
-| `muAccount:account` | unspecified    | The account for this session. Usually points to the vendor credentials. |
+| `muAccount:account` | unspecified    | The account for this session. Usually points to the partner credentials. |
